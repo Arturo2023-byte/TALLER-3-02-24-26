@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 180px;
+}
+
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.cart-item:last-child {
+  border-bottom: 0;
+}
+
+.alert {
+  border-radius: 10px;
+}

@@ -1,7 +1,4 @@
-version: '3.8'
-
 services:
-
   database:
     build: ./database
     environment:
@@ -20,6 +17,8 @@ services:
 
   api:
     build: ./api
+    ports:
+      - "8000:8000"
     environment:
       DATABASE_URL: postgresql://tienda_user:tienda_password@database:5432/tienda_db
     depends_on:
@@ -51,4 +50,3 @@ volumes:
 
 networks:
   tienda_network:
-    driver: bridge

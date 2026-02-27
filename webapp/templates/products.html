@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Productos - Tienda Virtual{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+  <div class="col-12">
+    <h1 class="mb-2">Nuestros Productos</h1>
+    <p class="text-muted">Explora el catálogo</p>
+  </div>
+</div>
+
+<div class="row">
+  {% if products %}
+    {% for p in products %}
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          {% if p.image_url %}
+            <img src="{{ p.image_url }}" class="card-img-top" alt="{{ p.name }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ p.name }}</h5>
+            <p class="card-text">{{ p.description or "" }}</p>
+            <p class="card-text"><b>${{ p.price }}</b> · Stock: {{ p.stock }}</p>
+
+            <form method="post" action="{{ url_for('add_to_cart', product_id=p.id) }}">
+              <div class="input-group">
+                <input class="form-control" type="number" name="quantity" min="1" value="1">
+                <button class="btn btn-primary" type="submit">Agregar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="col-12">
+      <div class="alert alert-warning">No hay productos para mostrar.</div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
